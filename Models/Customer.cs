@@ -14,7 +14,7 @@ public class Customer
 
     [DataType(DataType.EmailAddress)]
     public string? Email { get; set; }
-    public CustomerType customerType { get; set; }
+    public CustomerType CustomerType { get; set; }
 
     [DataType(DataType.PhoneNumber)]
     public string? Phone { get; set; }
