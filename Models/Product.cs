@@ -21,8 +21,8 @@ public class Product
     public string? Description { get; set; }
     public string? Category { get; set; }
     public string? ImageUrl { get; set; }
-    public DateTime CreatedDate { get; set; }
-    public bool IsActive { get; set; }
+    public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+    public bool IsActive { get; set; } = true;
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 
 }

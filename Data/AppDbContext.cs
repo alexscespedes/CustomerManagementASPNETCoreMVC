@@ -25,5 +25,21 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Order>()
             .Property(o => o.TotalAmount)
             .HasPrecision(18, 2);
+
+        modelBuilder.Entity<Customer>()
+            .Property(c => c.CreatedDate)
+            .HasDefaultValueSql("GETUTCDATE()");
+
+        modelBuilder.Entity<Customer>()
+            .Property(c => c.IsActive)
+            .HasDefaultValue(true);
+
+        modelBuilder.Entity<Product>()
+            .Property(p => p.CreatedDate)
+            .HasDefaultValueSql("GETUTCDATE()");
+
+        modelBuilder.Entity<Product>()
+            .Property(p => p.IsActive)
+            .HasDefaultValue(true);
     }
 }
