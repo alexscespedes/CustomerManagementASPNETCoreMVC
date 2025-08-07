@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CustomerManagementASPNETCoreMVC.Data;
 using CustomerManagementASPNETCoreMVC.Models;
+using CustomerManagementASPNETCoreMVC.Models.Enums;
 
 namespace CustomerManagementASPNETCoreMVC.Controllers
 {
@@ -46,6 +47,7 @@ namespace CustomerManagementASPNETCoreMVC.Controllers
         // GET: Customer/Create
         public IActionResult Create()
         {
+            ViewBag.CustomerType = new SelectList(Enum.GetValues(typeof(CustomerType)));
             return View();
         }
 
@@ -78,6 +80,9 @@ namespace CustomerManagementASPNETCoreMVC.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.CustomerType = new SelectList(Enum.GetValues(typeof(CustomerType)));
+
             return View(customer);
         }
 

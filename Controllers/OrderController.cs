@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CustomerManagementASPNETCoreMVC.Data;
 using CustomerManagementASPNETCoreMVC.Models;
+using CustomerManagementASPNETCoreMVC.Models.Enums;
 
 namespace CustomerManagementASPNETCoreMVC.Controllers
 {
@@ -51,6 +52,7 @@ namespace CustomerManagementASPNETCoreMVC.Controllers
         {
             ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Name");
             ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name");
+            ViewBag.OrderStatus = new SelectList(Enum.GetValues(typeof(OrderStatus)));
             return View();
         }
 
@@ -87,6 +89,8 @@ namespace CustomerManagementASPNETCoreMVC.Controllers
             }
             ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Name", order.CustomerId);
             ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name", order.ProductId);
+            ViewBag.OrderStatus = new SelectList(Enum.GetValues(typeof(OrderStatus)));
+            
             return View(order);
         }
 
